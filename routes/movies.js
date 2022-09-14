@@ -2,12 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('This route will show all of the movies i guess');
+router.get('/', (req, res) => {
+  res.render("similarMovies");
 });
 
+router.post('/', (req, res) => {
+  console.log(req.body.favoriteMovie);
+  res.send(`${req.body.favoriteMovie}`)
+})
+
 router.get('/:movieTitle', (req, res) => {
-    res.send(`Get movies similar to ${req.params.movieTitle}`);
+    res.send('No idea what this does yet');
 });
 
 module.exports = router;
