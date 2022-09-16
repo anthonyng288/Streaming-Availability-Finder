@@ -9,10 +9,12 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   console.log(req.body.favoriteMovie);
   res.send(`${req.body.favoriteMovie}`)
+
 })
 
-router.get('/:movieTitle', (req, res) => {
-    res.send('No idea what this does yet');
-});
+// router.get('/search/:movieTitle', (req, res) => {
+//     res.write('You are searching for: ' + req.params.movieTitle);
+//     res.end();
+// });
 
 module.exports = router;
