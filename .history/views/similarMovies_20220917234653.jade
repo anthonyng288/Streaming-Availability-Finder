@@ -1,0 +1,10 @@
+extends layout
+
+block content
+      img(class="moviePoster" src="https://image.tmdb.org/t/p/original#{movies.poster_path}", alt="#{movies.original_title}")
+
+      h1(class="movieName")"#{movies.original_title}"
+
+      h2(class="region")"#{movies.production_countries[1]}"
+
+      p(class="description")"#{movies.overview}"

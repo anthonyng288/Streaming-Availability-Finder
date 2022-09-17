@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 Movies Searched:  
+  //- #{JSON.stringify(movies)}
+  //- a(href="https://api.themoviedb.org/3/movie/#{movie.id}?api_key=bbd65721f7d2491fab3bc98e879ff7d7&language=en-US")
+  each movie in movies
+    a(href="/search/movie/#{movie.id}")  
+      img(src="https://image.tmdb.org/t/p/original#{movie.poster_path}", alt=`#{movie.original_title}`)
+  
+  

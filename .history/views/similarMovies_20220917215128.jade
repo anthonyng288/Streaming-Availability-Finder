@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Movies Searched:  
+  //- #{JSON.stringify(movies)}
+  each movie in movies
+    a(href="/search")
+      img(src="https://image.tmdb.org/t/p/original#{movie.poster_path}", alt=`#{movie.original_title}`)
+  
+  

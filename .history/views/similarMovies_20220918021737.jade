@@ -1,0 +1,18 @@
+extends layout
+
+block content
+      img(class="moviePoster" src="https://image.tmdb.org/t/p/original#{movies.poster_path}", alt="#{movies.original_title}")
+
+      h1(class="movieName")"#{movies.original_title}"
+
+      //h2(class="region")"#{movies.production_countries[0].name}"
+
+      p(class="description")"#{movies.overview}"
+
+
+      hr
+
+      h1(class="similarMovieHeading") Similar Movies 
+      each similarMovie in similar
+            a(href="/search/movie/#{similarMovie.id}")  
+                  img(src="https://image.tmdb.org/t/p/original#{similarMovie.poster_path}", alt=`#{similarMovie.original_title}`)
