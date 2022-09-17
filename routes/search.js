@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:movieTitle', (req, res) => {
-    const options = createMovieOptions(req.params.movieTitle);
+    const options = createMovieOptions(req.params.movieTitle);//Await/promise here?
     console.log(options)
     const movieReq = https.request(options, (movieRes) => {
             //Callback function, deals with what we get 
