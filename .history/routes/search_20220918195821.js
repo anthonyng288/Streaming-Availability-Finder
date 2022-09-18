@@ -57,7 +57,7 @@ router.get("/movie/:movieID", (req, res) => {
 
 
 const tmdb = {
-    api_key: process.env.TMDB_API_KEY,
+    api_key: 'bbd65721f7d2491fab3bc98e879ff7d7',
     language: 'enUS',
     page: 1,
     include_adult: true,

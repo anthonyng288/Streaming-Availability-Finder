@@ -36,7 +36,6 @@ router.get("/movie/:movieID", (req, res) => {
     const movieEndpoint = `https://api.themoviedb.org/3/movie/${req.params.movieID}?api_key=${tmdb.api_key}&language=en-US`
     const similarMovieEndpoint = `https://api.themoviedb.org/3/movie/${req.params.movieID}/similar?api_key=${tmdb.api_key}&language=${tmdb.language}&page=1`
     //console.log("This is the movieEndpoint " + movieEndpoint);
-    console.log("TMDB API_KEY " + process.env.TMDB_API_KEY);
 
     let endpoints = [movieEndpoint, similarMovieEndpoint];
     // const movieRequest = axios.get(movieEndpoint);
@@ -57,7 +56,7 @@ router.get("/movie/:movieID", (req, res) => {
 
 
 const tmdb = {
-    api_key: process.env.TMDB_API_KEY,
+    api_key: 'bbd65721f7d2491fab3bc98e879ff7d7',
     language: 'enUS',
     page: 1,
     include_adult: true,
