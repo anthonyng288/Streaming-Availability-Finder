@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const axios = require("axios");
 
-let similar_movie_id = [];
 
 router.get('/', (req, res) => {
     res.render('searchMovie')
@@ -37,11 +36,9 @@ router.get("/movie/:movieID", (req, res) => {
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(([ {data: detailOfMovies}, {data: listOfSimilarMovies} ]) => {
         const topTenSimilarMovies = listOfSimilarMovies.results.splice(0, 10);
         res.render("similarMovies", {movies: detailOfMovies, similarMovies: topTenSimilarMovies});
-        for(i=0; i < topTenSimilarMovies; i++){
-            similar_movie_id.push(topTenSimilarMovies[i])
-        }
         });
     });
+
 
 const tmdb = {
     api_key: process.env.TMDB_API_KEY,
@@ -57,18 +54,15 @@ const tmdb = {
 const options = {
     method: 'GET',
     url: 'https://streaming-availability.p.rapidapi.com/get/basic',
-    params: {country: 'us', tmdb_id: 'movie/155', output_language: 'en'},
+    params: {country: 'us', tmdb_id: 'movie/120', output_language: 'en'},
     headers: {
       'X-RapidAPI-Key': process.env.STREAMING_API_KEY,
       'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
     }
   };
   
-//   axios.request(options).then(function (response) {
-// 	console.log(response.data);
-// }).catch(function (error) {
-// 	console.error(error);
-// });
+
+//  
 
 
 

@@ -43,6 +43,8 @@ router.get("/movie/:movieID", (req, res) => {
         });
     });
 
+
+
 const tmdb = {
     api_key: process.env.TMDB_API_KEY,
     language: 'enUS',
@@ -64,11 +66,11 @@ const options = {
     }
   };
   
-//   axios.request(options).then(function (response) {
-// 	console.log(response.data);
-// }).catch(function (error) {
-// 	console.error(error);
-// });
+  axios.request(options).then(function (response) {
+	console.log(response.data);
+}).catch(function (error) {
+	console.error(error);
+});
 
 
 
