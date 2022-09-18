@@ -38,20 +38,11 @@ hr {
 
 .movie_list {
   display: flex;
-  flex-wrap: wrap;
-  width: auto;
 }
 
 .movie_display {
-  justify-content: space-evenly;
-  flex-direction: column;
-  text-align: justify;
-  
+  flex: 1;
 }
-
-.stream {
-  
-} 
 
 .movie_poster {
   width: 465px;

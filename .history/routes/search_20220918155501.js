@@ -8,16 +8,19 @@ router.get('/', (req, res) => {
     res.render('searchMovie')
 })
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
     res.redirect(`/search/${req.body.favoriteMovie}`)
-    
-    //console.log("body " + req.body);
+    console.log("From input" + req.body.favoriteMovie);
+
+    next();
+
 })
 
 router.get("/:movieTitle", (req, res) => {
     const searchMovieEndpoint = `https://api.themoviedb.org/3/search/movie?api_key=${tmdb.api_key}&language=${tmdb.language}&query=${req.params.movieTitle}`; //make this more modualr
-    // console.log("From movieTitle Route " + req.params.movieTitle);
-    // console.log("Movie endpoint: " + searchMovieEndpoint);
+    console.log("From movieTitle Route " + req.params.movieTitle);
+    console.log("Movie endpoint: " + searchMovieEndpoint);
+    console.log(req.body);
     axios   
         .get(searchMovieEndpoint)
         .then((response) => {

@@ -37,25 +37,14 @@ hr {
 }
 
 .movie_list {
-  display: flex;
-  flex-wrap: wrap;
-  width: auto;
+  display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
 }
 
 .movie_display {
-  justify-content: space-evenly;
-  flex-direction: column;
-  text-align: justify;
   
-}
-
-.stream {
-  
-} 
-
-.movie_poster {
-  width: 465px;
-  height: 695px;
+    
 }
 
 .description{

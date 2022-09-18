@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+    console.log("From input" + req.body.favoriteMovie);
     res.redirect(`/search/${req.body.favoriteMovie}`)
     
     //console.log("body " + req.body);

@@ -43,15 +43,10 @@ hr {
 }
 
 .movie_display {
-  justify-content: space-evenly;
+  flex: 1 15% 10%;
   flex-direction: column;
-  text-align: justify;
   
 }
-
-.stream {
-  
-} 
 
 .movie_poster {
   width: 465px;

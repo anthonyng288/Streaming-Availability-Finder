@@ -45,13 +45,8 @@ hr {
 .movie_display {
   justify-content: space-evenly;
   flex-direction: column;
-  text-align: justify;
   
 }
-
-.stream {
-  
-} 
 
 .movie_poster {
   width: 465px;

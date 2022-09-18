@@ -36,33 +36,10 @@ hr {
   margin-left: 40%;
 }
 
-.movie_list {
-  display: flex;
-  flex-wrap: wrap;
-  width: auto;
-}
-
-.movie_display {
-  justify-content: space-evenly;
-  flex-direction: column;
-  text-align: justify;
-  
-}
-
-.stream {
-  
-} 
-
-.movie_poster {
-  width: 465px;
-  height: 695px;
-}
-
 .description{
   margin-top: 15%;
   margin-left: 35%;
 }
-
 
 .region {
   margin-left: 45%;
@@ -80,6 +57,6 @@ hr {
 }
 
 .stream{
-  position: absolute;
-  bottom: 0;
+  width: 22px; 
+  margin: 20px
 }
