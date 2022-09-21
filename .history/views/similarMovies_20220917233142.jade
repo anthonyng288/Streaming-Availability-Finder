@@ -1,8 +1,0 @@
-extends layout
-
-block content
-      img(class="moviePoster" src="https://image.tmdb.org/t/p/original#{movies.poster_path}", alt="#{movies.original_title}")
-
-      h1(class="movieName")"#{movies.original_title.replace(/"/g,' ')}"
-
-      p(class="description")"#{movies.overview}"

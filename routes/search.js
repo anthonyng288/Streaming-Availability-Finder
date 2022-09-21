@@ -32,16 +32,91 @@ router.get("/:movieTitle", (req, res) => {
 router.get("/movie/:movieID", (req, res) => {
     const movieEndpoint = `https://api.themoviedb.org/3/movie/${req.params.movieID}?api_key=${tmdb.api_key}&language=en-US`
     const similarMovieEndpoint = `https://api.themoviedb.org/3/movie/${req.params.movieID}/similar?api_key=${tmdb.api_key}&language=${tmdb.language}&page=${tmdb.page}`
+    
+    async function streamingAvailabilityAPI(movieID){
+        const options = {
+            method: 'GET',
+            url: 'https://streaming-availability.p.rapidapi.com/get/basic',
+            params: {country: 'us', tmdb_id: `movie/${movieID}`, output_language: 'en'},
+            headers: {
+              'X-RapidAPI-Key': process.env.STREAMING_API_KEY,
+              'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
+                }
+            };
+    
+        var response = await axios.request(options).then(response => response.data);
+        return response;
+    }
+
+    
 
     let endpoints = [movieEndpoint, similarMovieEndpoint];
-    
+
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(([ {data: detailOfMovies}, {data: listOfSimilarMovies} ]) => {
         const topTenSimilarMovies = listOfSimilarMovies.results.splice(0, 10);
-        //console.log(topTenSimilarMovies);
-        res.render("similarMovies", {movies: detailOfMovies, similarMovies: topTenSimilarMovies});
-        });
+        let movieStreamingService = [];
+        let formattedStreamingService = [];
+        let flattenedServices = [];
+
+        async function makePromises(topTenSimilarMovies){
+
+            for (let i = 0; i< topTenSimilarMovies.length; i++){
+                var streamResponse = await (streamingAvailabilityAPI(topTenSimilarMovies[i].id));
+                movieStreamingService.push(streamResponse.streamingInfo);
+
+            }
+
+            for(let i = 0; i < movieStreamingService.length; i++){
+                let keys = Object.keys(movieStreamingService[i]);
+                formattedStreamingService.push(keys);
+                
+            }
+            
+            for(let i = 0; i< formattedStreamingService.length; i++){
+                if(formattedStreamingService[i][0] === undefined){
+                    flattenedServices.push(' ');
+                }else{
+                    flattenedServices.push(formattedStreamingService[i][0]);
+                }
+            }
+            
+            for(let i = 0; i < flattenedServices.length; i++){
+                var html = "p" +
+                flattenedServices.toString(flattenedServices);
+            }
+
+            var html = "<div class=movie_list>";
+
+            for(let i = 0; i < topTenSimilarMovies.length; i++){
+                var id = topTenSimilarMovies[i].id;
+                var poster = topTenSimilarMovies[i].poster_path;
+                var title = topTenSimilarMovies[i].title;
+                var streams =  flattenedServices[i].toString(flattenedServices);
+
+                if(streams === " "){
+                    streams = "No Service Available"
+                }
+
+                var htmlMovie =
+                '<div class = "movie_display">' +
+                '<a href="/search/movie/' + id +'">' +
+                '<img class="movie_poster" src="https://image.tmdb.org/t/p/original' + poster +  '" alt="' + title + '">' +
+                '</a>'+
+                '<p class="stream">' + streams + '</p>' +
+                '</div>'   
+                
+                html = html + htmlMovie;  
+            }
+
+            html = html + "</div>"
+            res.render("similarMovies", {movies: detailOfMovies, similarMovies : html});
+        }
+
+        makePromises(topTenSimilarMovies);
+        
     });
 
+});
 
     
 const tmdb = {
@@ -52,33 +127,11 @@ const tmdb = {
     region: 'AU',
 }
 
-let streamingAvailabilityApp = streamingAvailabilityAPI(603);
-
-console.log("THis is my streaming app " + streamingAvailabilityApp);
 
 
 
-function streamingAvailabilityAPI(query){
-    let streamingResponse = "Nothing"
-    const options = {
-        method: 'GET',
-        url: 'https://streaming-availability.p.rapidapi.com/get/basic',
-        params: {country: 'us', tmdb_id: `movie/${query}`, output_language: 'en'},
-        headers: {
-          'X-RapidAPI-Key': process.env.STREAMING_API_KEY,
-          'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-        }
-      };
 
-      axios.request(options).then(function (response) {
-        streamingResponse = JSON.stringify(response.data);
-        return streamingResponse;
-        //console.log("This is streaming response " + streamingResponse);
-    }).catch(function (error) {
-        console.error(error);
-    });
-    
-}
+
 
 
 

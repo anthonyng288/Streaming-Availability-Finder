@@ -1,7 +1,0 @@
-extends layout
-
-block content
-  #{JSON.stringify(movies)}
-      img(src="https://image.tmdb.org/t/p/original#{movies.poster_path}", alt=`#{movies.original_title}`)
-  
-  

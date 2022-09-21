@@ -28,6 +28,37 @@ hr {
   margin-top: 25%;
 }
 
+.homepageImage{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+.uiButtons{
+  color:#000000;
+  position: relative;
+  left: 20;
+}
+
+.similarMoviesButton{
+  padding: 20px 40px;
+  margin-top: 30px;
+  color:#000000;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+.popularMoviesButton{
+  padding: 20px 40px;
+  margin-top: 30px;
+  color:#000000;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
 .moviePoster {
   float: left;
 }
@@ -46,12 +77,13 @@ hr {
   justify-content: space-evenly;
   flex-direction: column;
   text-align: justify;
+  padding-bottom: 120px;
+  border-style: solid;
+  border-radius: 10px;
+  margin: 10px;
   
 }
 
-.stream {
-  
-} 
 
 .movie_poster {
   width: 465px;
@@ -78,8 +110,8 @@ hr {
     margin-left: 50%;
    
 }
-
-.stream{
-  position: absolute;
-  bottom: 0;
-}
+ .stream{
+  font-weight: bold;
+  font-size: 40px;
+  padding-left: 20px;
+} 
