@@ -24,7 +24,7 @@ router.get("/:region", (req, res) => {
         let isoRegion = await regionConverter(req.params.region, regions);
         
         if(isoRegion === "Null" || undefined){
-            res.redirect('/popular/error')
+            res.render("popularError");
         } else {
             res.redirect(`/popular/movie/${isoRegion}`);
             
@@ -51,8 +51,6 @@ router.get("/movie/:isoRegion", (req, res) => {
         var response = await axios.request(options).then(response => response.data);
         return response;
     }
-
-
 
     axios
         .get(popularMoviesEndpoint)
@@ -121,22 +119,12 @@ router.get("/movie/:isoRegion", (req, res) => {
             }
     
             makePromises(topTenRegionMovies);
-            
-
-
-
-
-
-
+        
             
         });
 
 });
 
-
-// router.get("/error", (req , res) => {
-//     res.render("error");
-// });
 
 
 function regionConverter(userInput, rsp){   

@@ -21,12 +21,10 @@ router.get("/:movieTitle", (req, res) => {
             const allMovies = data.results;
             const topTenMovies = allMovies.splice(0, 10);
             res.render("movieSelect", {movies: topTenMovies, search_query: req.params.movieTitle});
+        })
+        .catch((error) => {
+            console.log(error);
         });
-    
-    
-        // .catch((error) =>=df
-        //     console.log(err
-        // }
 })
 
 router.get("/movie/:movieID", (req, res) => {
@@ -44,11 +42,9 @@ router.get("/movie/:movieID", (req, res) => {
                 }
             };
     
-        var response = await axios.request(options).then(response => response.data);
+        var response = await axios.request(options).then(response => response.data).catch((error) => res.render("error", {error: error}));
         return response;
     }
-
-    
 
     let endpoints = [movieEndpoint, similarMovieEndpoint];
 
@@ -126,23 +122,6 @@ const tmdb = {
     include_adult: true,
     region: 'AU',
 }
-
-
-
-
-
-
-
-
-
-
-  //I make some middleware to take a movie, which then requests from options and then use that to get movie streaming info
-
-
-  
-  
-
-
 
 
 
