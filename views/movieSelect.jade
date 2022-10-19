@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  a.btn(class='uiButtons' href='/search') Back
+  h1 Movies Searched: #{search_query}
+  each movie in movies
+    a(href="/search/movie/#{movie.id}")  
+      img(src="https://image.tmdb.org/t/p/original#{movie.poster_path}", alt=`#{movie.original_title}`)
+  
+  

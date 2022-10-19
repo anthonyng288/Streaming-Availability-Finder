@@ -1,0 +1,25 @@
+FROM node:16
+
+
+# Set basic AWS credentials and API Key variables
+ENV AWS_ACCESS_KEY_ID XXID
+ENV AWS_SECRET_ACCESS_KEY XXSECRET
+ENV AWS_SESSION_TOKEN XXTOKEN
+ENV TMDB_API_KEY YYKEY1
+ENV STREAMING_API_KEY XXYYYKEY
+ENV AWS_SDK_LOAD_CONFIG=
+
+
+# Copy the application folder inside the container
+COPY . /src
+# Set the default directory where CMD will execute
+WORKDIR /src
+
+
+COPY package*.json ./
+
+RUN npm install
+
+EXPOSE 3000
+# Set the default command to execute when creating a new container
+CMD ["npm", "start"]

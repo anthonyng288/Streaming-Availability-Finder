@@ -1,8 +1,117 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #D8DDDE;
 }
 
 a {
-  color: #00B7FF;
+  color: #D8DDDE;
 }
+
+
+img {
+  width: 30%;
+  margin: 10px 10px;
+  border-radius: 15px;
+}
+
+
+
+input {
+  width: 50%;
+  padding: 12px 20px;
+  margin-left: 30px;
+  margin-right: 20px;
+}
+
+hr {
+  margin-top: 25%;
+}
+
+.homepageImage{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+.uiButtons{
+  color:#000000;
+  position: relative;
+  left: 20;
+}
+
+.similarMoviesButton{
+  padding: 20px 40px;
+  margin-top: 30px;
+  color:#000000;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+.popularMoviesButton{
+  padding: 20px 40px;
+  margin-top: 30px;
+  color:#000000;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+.moviePoster {
+  float: left;
+}
+
+.movieName {
+  margin-left: 40%;
+}
+
+.movie_list {
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+}
+
+.movie_display {
+  justify-content: space-evenly;
+  flex-direction: column;
+  text-align: justify;
+  padding-bottom: 120px;
+  border-style: solid;
+  border-radius: 10px;
+  margin: 10px;
+  
+}
+
+
+.movie_poster {
+  width: 465px;
+  height: 695px;
+}
+
+.description{
+  margin-top: 15%;
+  margin-left: 35%;
+}
+
+
+.region {
+  margin-left: 45%;
+}
+
+.genre {
+  margin-left: 10%;
+  float: left;
+}
+
+.genre_list {
+    
+    margin-left: 50%;
+   
+}
+ .stream{
+  font-weight: bold;
+  font-size: 40px;
+  padding-left: 20px;
+} 

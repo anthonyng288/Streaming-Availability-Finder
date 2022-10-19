@@ -3,3 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  img(class="homepageImage" src='https://www.seekpng.com/png/full/10-104323_mini-film-fest-google-image-movie-reel-transparent.png')
+
+  a.btn(class='similarMoviesButton' href='/search') Search Similar Movies 
+  a.btn(class='popularMoviesButton' href='/popular') Search what's popular in a country
+  p Page Counter: #{count}
